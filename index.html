@@ -1,0 +1,1652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Laasya | Student</title>
+  <meta name="description" content="Hi! I'm Laasya, a student developer and creative technologist who loves building quirky, meaningful, and sometimes delightfully chaotic web projects." />
+  <meta name="author" content="Laasya" />
+  <meta property="og:title" content="Laasya | Student Developer & Creative Technologist" />
+  <meta property="og:description" content="Student developer blending logic with storytelling to make code feel alive." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --white: hsl(0, 0%, 94%);
+      --black: hsl(0, 0%, 8%);
+      --gray: hsl(0, 0%, 42%);
+      --background: hsl(0, 0%, 8%);
+      --foreground: hsl(0, 0%, 94%);
+      --card: hsl(0, 0%, 12%);
+      --card-foreground: hsl(0, 0%, 94%);
+      --secondary: hsl(0, 0%, 16%);
+      --secondary-foreground: hsl(0, 0%, 94%);
+      --muted: hsl(0, 0%, 16%);
+      --muted-foreground: hsl(0, 0%, 60%);
+      --pink: hsl(340, 82%, 65%);
+      --green: hsl(142, 70%, 55%);
+      --blue: hsl(202, 93%, 58%);
+      --yellow: hsl(42, 79%, 64%);
+      --red: hsl(350, 100%, 52%);
+      --border: hsl(0, 0%, 20%);
+      --link: hsl(340, 82%, 65%);
+      --link-green: hsl(142, 70%, 55%);
+      --link-blue: hsl(202, 93%, 58%);
+      --link-yellow: hsl(42, 79%, 64%);
+      --tag: hsl(0, 0%, 60%);
+      --highlight: hsl(75, 100%, 30%);
+    }
+
+    html {
+      font-family: 'JetBrains Mono', monospace;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--background);
+      color: var(--foreground);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-feature-settings: "liga" 1, "calt" 1;
+      min-height: 100vh;
+      overflow-x: hidden;
+      perspective: 1200px;
+    }
+
+    ::selection {
+      background: var(--highlight);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: color 0.2s ease;
+    }
+
+    .container {
+      max-width: 42rem;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+    }
+
+    @media (min-width: 640px) {
+      .container {
+        padding: 5rem 1.5rem;
+      }
+    }
+
+    /* Profile Header */
+    .profile-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    .profile-image {
+      width: 8rem;
+      height: 8rem;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1.5rem;
+      filter: grayscale(100%);
+      transition: all 0.5s ease;
+    }
+
+    .profile-image:hover {
+      filter: grayscale(0%);
+      transform: scale(1.05);
+    }
+
+    .profile-header h1 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .profile-header .tagline {
+      color: var(--muted-foreground);
+      font-size: 0.875rem;
+      max-width: 28rem;
+      line-height: 1.6;
+      margin-bottom: 0.5rem;
+    }
+
+    .typed-text {
+      color: var(--link);
+      font-weight: 500;
+    }
+
+    .typed-cursor {
+      color: var(--link);
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+
+    /* Navigation */
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      font-size: 0.875rem;
+      margin: 2rem 0;
+      animation: fadeInUp 0.6s ease-out 0.2s forwards;
+      opacity: 0;
+    }
+
+    .nav-link {
+      position: relative;
+      font-weight: 500;
+      color: var(--foreground);
+      cursor: pointer;
+      transition: color 0.2s ease;
+      background: none;
+      border: none;
+      font-family: inherit;
+      font-size: inherit;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      bottom: -2px;
+      left: 0;
+      background: var(--link);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .nav-link[data-color="pink"]:hover,
+    .nav-link[data-color="pink"].active { color: var(--pink); }
+    .nav-link[data-color="pink"]::after { background: var(--pink); }
+
+    .nav-link[data-color="green"]:hover,
+    .nav-link[data-color="green"].active { color: var(--green); }
+    .nav-link[data-color="green"]::after { background: var(--green); }
+
+    .nav-link[data-color="blue"]:hover,
+    .nav-link[data-color="blue"].active { color: var(--blue); }
+    .nav-link[data-color="blue"]::after { background: var(--blue); }
+
+    .nav-link[data-color="yellow"]:hover,
+    .nav-link[data-color="yellow"].active { color: var(--yellow); }
+    .nav-link[data-color="yellow"]::after { background: var(--yellow); }
+
+    /* Dividers */
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2.5rem 0;
+    }
+
+    .parallax-wrapper {
+      will-change: transform;
+    }
+
+    /* Section content */
+    .section-content {
+      transform-style: preserve-3d;
+      transform-origin: center center;
+      transition: opacity 0.3s ease, transform 0.5s ease, filter 0.4s ease;
+    }
+
+    .section-content.exiting {
+      opacity: 0;
+      filter: blur(8px);
+    }
+
+    .section-content.entering {
+      opacity: 0;
+      filter: blur(8px);
+    }
+
+    .section-content.visible {
+      opacity: 1;
+      filter: blur(0px);
+      transform: translateX(0) scale(1) rotateY(0deg);
+    }
+
+    /* Line reveal animation */
+    .line-reveal-item {
+      opacity: 0;
+      transform: translateY(20px);
+      filter: blur(4px);
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out, filter 0.5s ease-out;
+    }
+
+    .line-reveal-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0px);
+    }
+
+    /* Text utilities */
+    .text-link { color: var(--link); }
+    .text-link-green { color: var(--link-green); }
+    .text-link-blue { color: var(--link-blue); }
+    .text-link-yellow { color: var(--link-yellow); }
+    .text-muted { color: var(--muted-foreground); }
+    .text-tag { color: var(--tag); }
+
+    /* Home Section */
+    .home-section p {
+      color: var(--muted-foreground);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .home-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 2rem;
+    }
+
+    .home-tags span {
+      padding: 0.25rem 0.75rem;
+      background: var(--secondary);
+      font-size: 0.875rem;
+    }
+
+    .activity-list {
+      list-style: none;
+    }
+
+    .activity-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      color: var(--muted-foreground);
+      margin-bottom: 0.5rem;
+    }
+
+    .activity-list .arrow-pink { color: var(--link); }
+    .activity-list .arrow-green { color: var(--link-green); }
+    .activity-list .arrow-blue { color: var(--link-blue); }
+    .activity-list .arrow-yellow { color: var(--link-yellow); }
+
+    /* Skills Section */
+    .skills-section h2 {
+      font-size: 1.25rem;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+    }
+
+    .skill-bar-container {
+      margin-bottom: 1rem;
+    }
+
+    .skill-bar-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.375rem;
+    }
+
+    .skill-bar-header .name {
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    .skill-bar-header .level {
+      font-size: 0.875rem;
+      color: var(--muted-foreground);
+    }
+
+    .skill-bar-bg {
+      height: 0.5rem;
+      background: var(--secondary);
+      border-radius: 9999px;
+      overflow: hidden;
+    }
+
+    .skill-bar-fill {
+      height: 100%;
+      width: 0;
+      transition: width 1s ease-out;
+    }
+
+    .skill-bar-fill.color-pink { background: var(--pink); }
+    .skill-bar-fill.color-green { background: var(--green); }
+    .skill-bar-fill.color-blue { background: var(--blue); }
+    .skill-bar-fill.color-yellow { background: var(--yellow); }
+
+    .tech-section h3 {
+      font-size: 1.125rem;
+      font-weight: 500;
+      margin: 2.5rem 0 1rem;
+    }
+
+    .tech-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tech-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.375rem 0.75rem;
+      border: 1px solid;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      cursor: default;
+      transition: all 0.2s ease;
+      opacity: 0;
+      transform: scale(0.8);
+    }
+
+    .tech-badge.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .tech-badge:hover {
+      transform: scale(1.05) translateY(-2px);
+    }
+
+    .tech-badge.color-pink {
+      border-color: var(--pink);
+      color: var(--pink);
+    }
+    .tech-badge.color-pink:hover {
+      background: var(--pink);
+      color: var(--background);
+    }
+
+    .tech-badge.color-green {
+      border-color: var(--green);
+      color: var(--green);
+    }
+    .tech-badge.color-green:hover {
+      background: var(--green);
+      color: var(--background);
+    }
+
+    .tech-badge.color-blue {
+      border-color: var(--blue);
+      color: var(--blue);
+    }
+    .tech-badge.color-blue:hover {
+      background: var(--blue);
+      color: var(--background);
+    }
+
+    .tech-badge.color-yellow {
+      border-color: var(--yellow);
+      color: var(--yellow);
+    }
+    .tech-badge.color-yellow:hover {
+      background: var(--yellow);
+      color: var(--background);
+    }
+
+    .tech-badge svg {
+      width: 1.125rem;
+      height: 1.125rem;
+    }
+
+    /* Projects Section */
+    .projects-section h2 {
+      font-size: 1.125rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-item {
+      margin-bottom: 1rem;
+    }
+
+    .project-header {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    @media (min-width: 640px) {
+      .project-header {
+        flex-direction: row;
+        align-items: baseline;
+        gap: 0.75rem;
+      }
+    }
+
+    .project-link {
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .project-link.hover-pink:hover { color: var(--link); }
+    .project-link.hover-green:hover { color: var(--link-green); }
+    .project-link.hover-blue:hover { color: var(--link-blue); }
+    .project-link.hover-yellow:hover { color: var(--link-yellow); }
+
+    .project-tag {
+      font-size: 0.75rem;
+      color: var(--tag);
+    }
+
+    .project-description {
+      font-size: 0.875rem;
+      color: var(--muted-foreground);
+      margin-top: 0.25rem;
+    }
+
+    /* Blog Section */
+    .blog-section h2 {
+      font-size: 1.125rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .blog-icons {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .icon-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      color: var(--muted-foreground);
+      transition: all 0.2s ease;
+    }
+
+    .icon-btn:hover {
+      color: var(--link);
+      background: var(--secondary);
+    }
+
+    .icon-btn svg {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+
+    .loading-state {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--muted-foreground);
+      padding: 2rem 0;
+    }
+
+    .loading-state .spinner {
+      width: 1rem;
+      height: 1rem;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .blog-post {
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .blog-post article {
+      padding: 1rem;
+      background: hsla(0, 0%, 16%, 0.5);
+      transition: background 0.2s ease;
+    }
+
+    .blog-post:hover article {
+      background: var(--secondary);
+    }
+
+    .blog-post-inner {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .blog-post-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .blog-post h3 {
+      font-weight: 500;
+      transition: color 0.2s ease;
+      margin-bottom: 0.25rem;
+    }
+
+    .blog-post:hover h3 {
+      color: var(--link);
+    }
+
+    .blog-post .date {
+      font-size: 0.75rem;
+      color: var(--muted-foreground);
+      margin-bottom: 0.5rem;
+    }
+
+    .blog-post .excerpt {
+      font-size: 0.875rem;
+      color: var(--muted-foreground);
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .blog-post .external-icon {
+      flex-shrink: 0;
+      margin-top: 0.25rem;
+      color: var(--muted-foreground);
+      transition: color 0.2s ease;
+    }
+
+    .blog-post:hover .external-icon {
+      color: var(--link);
+    }
+
+    .blog-footer {
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .blog-footer a {
+      font-size: 0.875rem;
+      color: var(--link);
+    }
+
+    .blog-footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Socials Section */
+    .socials-section h2 {
+      font-size: 1.125rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--border);
+      color: var(--muted-foreground);
+      transition: all 0.3s ease;
+    }
+
+    .social-link svg {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+
+    .social-link .name {
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    .social-link .external-icon {
+      width: 0.75rem;
+      height: 0.75rem;
+      opacity: 0.5;
+    }
+
+    .social-link.hover-foreground:hover {
+      color: var(--foreground);
+      border-color: var(--foreground);
+    }
+
+    .social-link.hover-blue:hover {
+      color: var(--link-blue);
+      border-color: var(--link-blue);
+    }
+
+    .social-link.hover-pink:hover {
+      color: var(--link);
+      border-color: var(--link);
+    }
+
+    .social-link.hover-yellow:hover {
+      color: var(--link-yellow);
+      border-color: var(--link-yellow);
+    }
+
+    .social-link.hover-green:hover {
+      color: var(--link-green);
+      border-color: var(--link-green);
+    }
+
+    /* GitHub Activity */
+    .github-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .github-header svg {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+
+    .section-title {
+      font-size: 1rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-title svg {
+      width: 1rem;
+      height: 1rem;
+    }
+
+    .activity-item {
+      border-left: 2px solid var(--border);
+      padding-left: 1rem;
+      margin-bottom: 0.75rem;
+      transition: border-color 0.2s ease;
+    }
+
+    .activity-item:hover {
+      border-left-color: var(--link);
+    }
+
+    .activity-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      color: var(--muted-foreground);
+    }
+
+    .activity-meta svg {
+      width: 1rem;
+      height: 1rem;
+    }
+
+    .activity-meta .repo {
+      color: var(--link);
+      font-weight: 500;
+    }
+
+    .activity-message {
+      font-size: 0.875rem;
+      margin-top: 0.25rem;
+    }
+
+    /* Repo cards */
+    .repo-card {
+      display: block;
+      padding: 1rem;
+      border: 1px solid var(--border);
+      margin-bottom: 1rem;
+      transition: border-color 0.2s ease;
+    }
+
+    .repo-card:hover {
+      border-color: var(--link-green);
+    }
+
+    .repo-card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    .repo-card h4 {
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .repo-card:hover h4 {
+      color: var(--link-green);
+    }
+
+    .repo-card .external-icon {
+      color: var(--muted-foreground);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .repo-card:hover .external-icon {
+      opacity: 1;
+    }
+
+    .repo-card p {
+      font-size: 0.875rem;
+      color: var(--muted-foreground);
+      margin-top: 0.25rem;
+    }
+
+    .repo-card-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 0.75rem;
+      font-size: 0.75rem;
+      color: var(--muted-foreground);
+    }
+
+    .repo-card-meta > span {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .repo-card-meta svg {
+      width: 0.75rem;
+      height: 0.75rem;
+    }
+
+    .language-dot {
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 50%;
+    }
+
+    .language-dot.bg-blue { background: var(--blue); }
+    .language-dot.bg-yellow { background: var(--yellow); }
+    .language-dot.bg-link-green { background: var(--link-green); }
+    .language-dot.bg-link { background: var(--link); }
+    .language-dot.bg-link-blue { background: var(--link-blue); }
+    .language-dot.bg-muted-foreground { background: var(--muted-foreground); }
+
+    /* Starred projects */
+    .starred-item {
+      margin-bottom: 0.75rem;
+    }
+
+    .starred-link {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+    }
+
+    .starred-link .name {
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .starred-link:hover .name {
+      color: var(--link-yellow);
+    }
+
+    .starred-link .stars {
+      font-size: 0.75rem;
+      color: var(--muted-foreground);
+    }
+
+    .starred-item p {
+      font-size: 0.875rem;
+      color: var(--muted-foreground);
+      margin-top: 0.25rem;
+    }
+
+    .github-footer {
+      text-align: center;
+      padding-top: 1rem;
+    }
+
+    .github-footer a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      color: var(--link);
+      transition: color 0.2s ease;
+    }
+
+    .github-footer a:hover {
+      color: var(--link-yellow);
+    }
+
+    .github-footer svg {
+      width: 1rem;
+      height: 1rem;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--muted-foreground);
+      border-top: 1px solid var(--border);
+      padding-top: 2rem;
+      animation: fadeInUp 0.6s ease-out 0.7s forwards;
+      opacity: 0;
+    }
+
+    footer p {
+      margin-bottom: 0.5rem;
+    }
+
+    footer a.author {
+      color: var(--link);
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    footer a.author:hover {
+      color: var(--link-green);
+    }
+
+    footer a.email {
+      color: var(--muted-foreground);
+      transition: color 0.2s ease;
+    }
+
+    footer a.email:hover {
+      color: var(--link-blue);
+    }
+
+    /* Keyframes */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Profile Header -->
+    <header class="profile-header parallax-wrapper" data-parallax-speed="0.3" data-parallax-direction="down">
+      <img src="https://raw.githubusercontent.com/mlaasya07/mlaasya07/main/profile.jpg" alt="Laasya" class="profile-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22128%22 height=%22128%22 viewBox=%220 0 128 128%22%3E%3Crect fill=%22%23333%22 width=%22128%22 height=%22128%22/%3E%3Ctext fill=%22%23888%22 font-family=%22sans-serif%22 font-size=%2240%22 x=%2250%25%22 y=%2255%25%22 text-anchor=%22middle%22%3EL%3C/text%3E%3C/svg%3E'" />
+      <h1>Hi! I'm Laasya</h1>
+      <p class="tagline">
+        I'm a <span class="typed-text" id="typed-output"></span><span class="typed-cursor">|</span>
+      </p>
+      <p class="tagline">
+        who loves building quirky, meaningful, and sometimes delightfully chaotic web projects.
+      </p>
+    </header>
+
+    <!-- Navigation -->
+    <nav id="navigation"></nav>
+
+    <div class="parallax-wrapper" data-parallax-speed="0.15">
+      <hr />
+    </div>
+
+    <!-- Main Content -->
+    <main>
+      <div class="section-content visible" id="section-content"></div>
+    </main>
+
+    <div class="parallax-wrapper" data-parallax-speed="0.2">
+      <hr />
+    </div>
+
+    <!-- Footer -->
+    <footer class="parallax-wrapper" data-parallax-speed="0.25" data-parallax-direction="up">
+      <p>
+        Built with curiosity and code by
+        <a href="https://aboutme-laasya.netlify.app/" target="_blank" rel="noopener noreferrer" class="author">Laasya</a>
+      </p>
+      <p>
+        <a href="mailto:mlaasy16@gmail.com" class="email">mlaasy16@gmail.com</a>
+      </p>
+    </footer>
+  </div>
+
+  <script type="module">
+    import {
+      GITHUB_USERNAME,
+      typedStrings,
+      typedConfig,
+      navTabs,
+      homeContent,
+      skills,
+      technologies,
+      projects,
+      socialLinks,
+      substackFeedUrl,
+      languageColors,
+      footerData,
+    } from './data.js';
+
+    // State
+    const state = {
+      activeTab: 'home',
+      direction: 0,
+      githubData: { activity: [], repos: [], starred: [], loading: true, error: null },
+      blogPosts: { posts: [], loading: true, error: null },
+    };
+
+    const tabOrder = ['home', 'skills', 'projects', 'blog', 'socials'];
+
+    // SVG Icons
+    const icons = {
+      externalLink: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`,
+      spinner: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="spinner"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>`,
+      gitCommit: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><line x1="3" y1="12" x2="9" y2="12"/><line x1="15" y1="12" x2="21" y2="12"/></svg>`,
+      star: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,
+      gitFork: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><path d="M18 9v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V9"/><path d="M12 12v3"/></svg>`,
+      plus: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>`,
+      github: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>`,
+      linkedin: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>`,
+      substack: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg>`,
+      medium: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>`,
+      leetcode: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/></svg>`,
+      codingame: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2zm-2 5v10l8-5-8-5z"/></svg>`,
+      code: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`,
+      terminal: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>`,
+      brain: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg>`,
+      database: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>`,
+      git: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M13 6h3a2 2 0 0 1 2 2v7"/><path d="M6 9v12"/></svg>`,
+      cloud: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>`,
+      globe: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`,
+      layers: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>`,
+      smartphone: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>`,
+      cpu: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>`,
+      palette: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.555C21.965 6.012 17.461 2 12 2z"/></svg>`,
+      shield: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
+    };
+
+    // Typed.js-style effect
+    class TypedEffect {
+      constructor(element, options) {
+        this.element = element;
+        this.strings = options.strings;
+        this.typeSpeed = options.typeSpeed || 100;
+        this.backSpeed = options.backSpeed || 50;
+        this.backDelay = options.backDelay || 2000;
+        this.loop = options.loop !== false;
+        this.stringIndex = 0;
+        this.charIndex = 0;
+        this.isDeleting = false;
+        this.timeout = null;
+        this.start();
+      }
+
+      start() {
+        this.type();
+      }
+
+      type() {
+        const currentString = this.strings[this.stringIndex];
+        
+        if (this.isDeleting) {
+          this.element.textContent = currentString.substring(0, this.charIndex - 1);
+          this.charIndex--;
+        } else {
+          this.element.textContent = currentString.substring(0, this.charIndex + 1);
+          this.charIndex++;
+        }
+
+        let typeSpeed = this.isDeleting ? this.backSpeed : this.typeSpeed;
+
+        if (!this.isDeleting && this.charIndex === currentString.length) {
+          typeSpeed = this.backDelay;
+          this.isDeleting = true;
+        } else if (this.isDeleting && this.charIndex === 0) {
+          this.isDeleting = false;
+          this.stringIndex = (this.stringIndex + 1) % this.strings.length;
+          typeSpeed = 500;
+        }
+
+        this.timeout = setTimeout(() => this.type(), typeSpeed);
+      }
+
+      destroy() {
+        if (this.timeout) clearTimeout(this.timeout);
+      }
+    }
+
+    // Initialize navigation
+    function renderNavigation() {
+      const nav = document.getElementById('navigation');
+      nav.innerHTML = navTabs.map(tab => `
+        <button 
+          class="nav-link ${state.activeTab === tab.value ? 'active' : ''}"
+          data-tab="${tab.value}"
+          data-color="${tab.color}"
+        >
+          ${tab.label}
+        </button>
+      `).join('');
+
+      nav.querySelectorAll('.nav-link').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const newTab = btn.dataset.tab;
+          const currentIndex = tabOrder.indexOf(state.activeTab);
+          const newIndex = tabOrder.indexOf(newTab);
+          state.direction = newIndex > currentIndex ? 1 : -1;
+          state.activeTab = newTab;
+          renderNavigation();
+          switchSection();
+        });
+      });
+    }
+
+    // Section switching with animation
+    function switchSection() {
+      const content = document.getElementById('section-content');
+      const dir = state.direction;
+      
+      content.classList.remove('visible');
+      content.classList.add('exiting');
+      content.style.transform = `translateX(${dir > 0 ? '-100px' : '100px'}) scale(0.95) rotateY(${dir > 0 ? '-5deg' : '5deg'})`;
+
+      setTimeout(() => {
+        content.innerHTML = '';
+        
+        switch (state.activeTab) {
+          case 'home': renderHomeSection(content); break;
+          case 'skills': renderSkillsSection(content); break;
+          case 'projects': renderProjectsSection(content); break;
+          case 'blog': renderBlogSection(content); break;
+          case 'socials': renderSocialsSection(content); break;
+        }
+
+        content.classList.remove('exiting');
+        content.classList.add('entering');
+        content.style.transform = `translateX(${dir > 0 ? '100px' : '-100px'}) scale(0.95) rotateY(${dir > 0 ? '5deg' : '-5deg'})`;
+
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            content.classList.remove('entering');
+            content.classList.add('visible');
+            content.style.transform = '';
+            setupLineReveals();
+            if (state.activeTab === 'skills') animateSkillBars();
+            if (state.activeTab === 'skills') animateTechBadges();
+          });
+        });
+      }, 300);
+    }
+
+    // Line reveal with Intersection Observer
+    function setupLineReveals() {
+      const items = document.querySelectorAll('.line-reveal-item');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const delay = parseInt(entry.target.dataset.delay || 0);
+            setTimeout(() => {
+              entry.target.classList.add('visible');
+            }, delay);
+          } else {
+            entry.target.classList.remove('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      items.forEach((item, index) => {
+        item.dataset.delay = index * 80;
+        observer.observe(item);
+      });
+    }
+
+    // Parallax effect
+    function setupParallax() {
+      const parallaxElements = document.querySelectorAll('.parallax-wrapper');
+      
+      window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        
+        parallaxElements.forEach(el => {
+          const speed = parseFloat(el.dataset.parallaxSpeed) || 0.2;
+          const direction = el.dataset.parallaxDirection === 'up' ? -1 : 1;
+          const yOffset = scrollY * speed * direction * 0.5;
+          el.style.transform = `translateY(${yOffset}px)`;
+        });
+      });
+    }
+
+    // Home Section
+    function renderHomeSection(container) {
+      container.innerHTML = `
+        <section class="home-section">
+          ${homeContent.intro.map((p, i) => `
+            <p class="line-reveal-item" data-delay="${i * 100}">${p.text}</p>
+          `).join('')}
+          
+          <div class="home-tags line-reveal-item" data-delay="200">
+            ${homeContent.tags.map(tag => `<span>${tag}</span>`).join('')}
+          </div>
+          
+          <hr class="line-reveal-item" data-delay="300" />
+          
+          <h3 class="line-reveal-item" data-delay="350" style="font-size: 0.875rem; font-weight: 700; margin-bottom: 1rem;">What I'm up to</h3>
+          <ul class="activity-list">
+            ${homeContent.activities.map((activity, i) => `
+              <li class="line-reveal-item" data-delay="${400 + i * 80}">
+                <span class="arrow-${activity.arrow}">→</span>
+                <span>${activity.text}</span>
+              </li>
+            `).join('')}
+          </ul>
+        </section>
+      `;
+    }
+
+    // Skills Section
+    function renderSkillsSection(container) {
+      container.innerHTML = `
+        <section class="skills-section">
+          <h2 class="line-reveal-item">skills & expertise</h2>
+          
+          <div class="skills-bars">
+            ${skills.map((skill, i) => `
+              <div class="skill-bar-container line-reveal-item" data-delay="${i * 100}">
+                <div class="skill-bar-header">
+                  <span class="name">${skill.name}</span>
+                  <span class="level">${skill.level}%</span>
+                </div>
+                <div class="skill-bar-bg">
+                  <div class="skill-bar-fill color-${skill.color}" data-level="${skill.level}"></div>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+          
+          <div class="tech-section">
+            <h3 class="line-reveal-item" data-delay="${skills.length * 100 + 100}">technologies I work with</h3>
+            <div class="tech-badges">
+              ${technologies.map((tech, i) => `
+                <div class="tech-badge color-${tech.color}" data-index="${i}">
+                  ${icons[tech.icon] || ''}
+                  <span>${tech.name}</span>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
+    function animateSkillBars() {
+      setTimeout(() => {
+        document.querySelectorAll('.skill-bar-fill').forEach(bar => {
+          const level = bar.dataset.level;
+          bar.style.width = level + '%';
+        });
+      }, 200);
+    }
+
+    function animateTechBadges() {
+      document.querySelectorAll('.tech-badge').forEach((badge, i) => {
+        setTimeout(() => {
+          badge.classList.add('visible');
+        }, 300 + i * 50);
+      });
+    }
+
+    // Projects Section
+    function renderProjectsSection(container) {
+      const colorClasses = {
+        pink: 'hover-pink',
+        green: 'hover-green',
+        blue: 'hover-blue',
+        yellow: 'hover-yellow',
+      };
+
+      container.innerHTML = `
+        <section class="projects-section">
+          <h2 class="line-reveal-item">Projects I've built</h2>
+          
+          ${projects.map((project, i) => `
+            <div class="project-item line-reveal-item" data-delay="${(i + 1) * 100}">
+              <div class="project-header">
+                <a href="${project.url}" target="_blank" rel="noopener noreferrer" class="project-link ${colorClasses[project.color]}">
+                  ${project.name}
+                </a>
+                <span class="project-tag">#${project.tag}</span>
+              </div>
+              <p class="project-description">${project.description}</p>
+            </div>
+          `).join('')}
+        </section>
+      `;
+    }
+
+    // Blog Section
+    function renderBlogSection(container) {
+      container.innerHTML = `
+        <section class="blog-section">
+          <h2 class="line-reveal-item">
+            Recent blog posts
+            <div class="blog-icons">
+              <a href="https://mlaasya07.substack.com/" target="_blank" rel="noopener noreferrer" class="icon-btn" title="Substack">
+                ${icons.substack}
+              </a>
+              <a href="https://medium.com/@mlaasya07" target="_blank" rel="noopener noreferrer" class="icon-btn" title="Medium">
+                ${icons.medium}
+              </a>
+            </div>
+          </h2>
+          
+          <div id="blog-posts">
+            ${state.blogPosts.loading ? `
+              <div class="loading-state">
+                ${icons.spinner}
+                <span style="font-size: 0.875rem;">Loading posts from Substack...</span>
+              </div>
+            ` : ''}
+          </div>
+          
+          <div class="blog-footer line-reveal-item" data-delay="500">
+            <a href="https://mlaasya07.substack.com/" target="_blank" rel="noopener noreferrer">
+              View all posts on Substack →
+            </a>
+          </div>
+        </section>
+      `;
+
+      if (state.blogPosts.loading && state.blogPosts.posts.length === 0) {
+        fetchBlogPosts();
+      } else {
+        renderBlogPosts();
+      }
+    }
+
+    async function fetchBlogPosts() {
+      try {
+        const res = await fetch(substackFeedUrl);
+        const data = await res.json();
+        
+        if (data.status === 'ok' && data.items) {
+          state.blogPosts.posts = data.items.slice(0, 7).map(item => ({
+            title: item.title,
+            pubDate: item.pubDate,
+            link: item.link,
+            description: item.description?.replace(/<[^>]*>/g, '').slice(0, 150) + '...' || '',
+          }));
+        } else {
+          state.blogPosts.error = 'Failed to load posts';
+        }
+      } catch (err) {
+        state.blogPosts.error = 'Failed to fetch Substack posts';
+        console.error('Substack fetch error:', err);
+      } finally {
+        state.blogPosts.loading = false;
+        if (state.activeTab === 'blog') renderBlogPosts();
+      }
+    }
+
+    function renderBlogPosts() {
+      const container = document.getElementById('blog-posts');
+      if (!container) return;
+
+      if (state.blogPosts.error) {
+        container.innerHTML = `
+          <p style="font-size: 0.875rem; color: var(--muted-foreground); padding: 1rem 0;">
+            Unable to load posts. Visit
+            <a href="https://mlaasya07.substack.com/" target="_blank" rel="noopener noreferrer" style="color: var(--link);">my Substack</a>
+            directly.
+          </p>
+        `;
+        return;
+      }
+
+      container.innerHTML = state.blogPosts.posts.map((post, i) => `
+        <a href="${post.link}" target="_blank" rel="noopener noreferrer" class="blog-post line-reveal-item" data-delay="${(i + 1) * 100}">
+          <article>
+            <div class="blog-post-inner">
+              <div class="blog-post-content">
+                <h3>${post.title}</h3>
+                <p class="date">${formatDate(post.pubDate)}</p>
+                <p class="excerpt">${post.description}</p>
+              </div>
+              <span class="external-icon">${icons.externalLink}</span>
+            </div>
+          </article>
+        </a>
+      `).join('');
+
+      setupLineReveals();
+    }
+
+    function formatDate(dateStr) {
+      return new Date(dateStr).toLocaleDateString('en-US', {
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric',
+      });
+    }
+
+    // Socials Section
+    function renderSocialsSection(container) {
+      container.innerHTML = `
+        <section class="socials-section" style="display: flex; flex-direction: column; gap: 2.5rem;">
+          <div>
+            <h2 class="line-reveal-item">Connect with me</h2>
+            <div class="social-links">
+              ${socialLinks.map((social, i) => `
+                <a href="${social.url}" target="_blank" rel="noopener noreferrer" 
+                   class="social-link ${social.hoverClass} line-reveal-item" data-delay="${(i + 1) * 80}">
+                  ${icons[social.iconType]}
+                  <span class="name">${social.name}</span>
+                  <span class="external-icon">${icons.externalLink}</span>
+                </a>
+              `).join('')}
+            </div>
+          </div>
+          
+          <hr class="line-reveal-item" data-delay="500" />
+          
+          <div>
+            <div class="github-header line-reveal-item" data-delay="550">
+              ${icons.github}
+              <h2 style="margin: 0;">GitHub Activity</h2>
+            </div>
+            
+            <div id="github-content">
+              ${state.githubData.loading ? `
+                <div class="loading-state">
+                  ${icons.spinner}
+                  <span>Loading GitHub data...</span>
+                </div>
+              ` : ''}
+            </div>
+          </div>
+        </section>
+      `;
+
+      if (state.githubData.loading && state.githubData.activity.length === 0) {
+        fetchGitHubData();
+      } else {
+        renderGitHubContent();
+      }
+    }
+
+    async function fetchGitHubData() {
+      try {
+        const [eventsRes, reposRes, starredRes] = await Promise.all([
+          fetch(`https://api.github.com/users/${GITHUB_USERNAME}/events/public?per_page=30`),
+          fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=10`),
+          fetch(`https://api.github.com/users/${GITHUB_USERNAME}/starred?per_page=5`),
+        ]);
+
+        if (eventsRes.ok) {
+          const events = await eventsRes.json();
+          state.githubData.activity = events
+            .map(getActivityFromEvent)
+            .filter(Boolean)
+            .slice(0, 5);
+        }
+
+        if (reposRes.ok) {
+          const repos = await reposRes.json();
+          state.githubData.repos = repos
+            .filter(r => !r.name.includes('.github') && !r.fork)
+            .slice(0, 3)
+            .map(r => ({
+              name: r.name,
+              description: r.description || 'No description',
+              stars: r.stargazers_count,
+              forks: r.forks_count,
+              language: r.language || 'Unknown',
+              url: r.html_url,
+            }));
+        }
+
+        if (starredRes.ok) {
+          const starred = await starredRes.json();
+          state.githubData.starred = starred.slice(0, 3).map(r => ({
+            name: r.full_name,
+            description: r.description || 'No description',
+            stars: formatStars(r.stargazers_count),
+            language: r.language || 'Unknown',
+            url: r.html_url,
+          }));
+        }
+      } catch (err) {
+        console.error('Failed to fetch GitHub data:', err);
+        state.githubData.error = 'Failed to load GitHub data';
+      } finally {
+        state.githubData.loading = false;
+        if (state.activeTab === 'socials') renderGitHubContent();
+      }
+    }
+
+    function getActivityFromEvent(event) {
+      const repoName = event.repo.name.split('/')[1];
+      const date = formatTimeAgo(event.created_at);
+
+      switch (event.type) {
+        case 'PushEvent':
+          return {
+            type: 'push',
+            repo: repoName,
+            message: event.payload.commits?.[0]?.message?.split('\n')[0] || 'Pushed changes',
+            date,
+          };
+        case 'WatchEvent':
+          return {
+            type: 'star',
+            repo: event.repo.name,
+            message: `Starred ${event.repo.name}`,
+            date,
+          };
+        case 'ForkEvent':
+          return {
+            type: 'fork',
+            repo: event.repo.name,
+            message: `Forked ${event.repo.name}`,
+            date,
+          };
+        case 'CreateEvent':
+          const refType = event.payload.ref_type;
+          const ref = event.payload.ref;
+          return {
+            type: 'create',
+            repo: repoName,
+            message: refType === 'repository' 
+              ? `Created repository ${repoName}`
+              : `Created ${refType} ${ref || ''} in ${repoName}`,
+            date,
+          };
+        default:
+          return null;
+      }
+    }
+
+    function formatTimeAgo(dateString) {
+      const date = new Date(dateString);
+      const now = new Date();
+      const diffMs = now.getTime() - date.getTime();
+      const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+      
+      if (diffDays === 0) return 'today';
+      if (diffDays === 1) return '1 day ago';
+      if (diffDays < 7) return `${diffDays} days ago`;
+      if (diffDays < 14) return '1 week ago';
+      if (diffDays < 30) return `${Math.floor(diffDays / 7)} weeks ago`;
+      if (diffDays < 60) return '1 month ago';
+      return `${Math.floor(diffDays / 30)} months ago`;
+    }
+
+    function formatStars(count) {
+      if (count >= 1000) return `${(count / 1000).toFixed(1)}k`;
+      return count.toString();
+    }
+
+    function getActivityIcon(type) {
+      const iconMap = {
+        push: `<span style="color: var(--link);">${icons.gitCommit}</span>`,
+        star: `<span style="color: var(--link-yellow);">${icons.star}</span>`,
+        fork: `<span style="color: var(--link-green);">${icons.gitFork}</span>`,
+        create: `<span style="color: var(--link-blue);">${icons.plus}</span>`,
+      };
+      return iconMap[type] || iconMap.push;
+    }
+
+    function getLanguageClass(language) {
+      return languageColors[language] || 'bg-muted-foreground';
+    }
+
+    function renderGitHubContent() {
+      const container = document.getElementById('github-content');
+      if (!container) return;
+
+      if (state.githubData.error) {
+        container.innerHTML = `
+          <div style="text-align: center; padding: 2rem 0;">
+            <p style="color: var(--muted-foreground);">${state.githubData.error}</p>
+            <a href="https://github.com/${GITHUB_USERNAME}" target="_blank" rel="noopener noreferrer"
+               style="display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1rem; font-size: 0.875rem; color: var(--link);">
+              View profile on GitHub
+              ${icons.externalLink}
+            </a>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = `
+        <!-- Recent Activity -->
+        <div style="margin-bottom: 2rem;">
+          <h3 class="section-title line-reveal-item" data-delay="600">
+            <span style="color: var(--link);">${icons.gitCommit}</span>
+            Recent Activity
+          </h3>
+          ${state.githubData.activity.map((item, i) => `
+            <div class="activity-item line-reveal-item" data-delay="${650 + i * 60}">
+              <div class="activity-meta">
+                ${getActivityIcon(item.type)}
+                <span class="repo">${item.repo}</span>
+                <span>•</span>
+                <span>${item.date}</span>
+              </div>
+              <p class="activity-message">${item.message}</p>
+            </div>
+          `).join('')}
+        </div>
+        
+        <!-- Repositories -->
+        <div style="margin-bottom: 2rem;">
+          <h3 class="section-title line-reveal-item" data-delay="900">
+            <span style="color: var(--link-green);">${icons.gitFork}</span>
+            My Repositories
+          </h3>
+          ${state.githubData.repos.map((repo, i) => `
+            <a href="${repo.url}" target="_blank" rel="noopener noreferrer" 
+               class="repo-card line-reveal-item" data-delay="${950 + i * 80}">
+              <div class="repo-card-header">
+                <h4>${repo.name}</h4>
+                <span class="external-icon">${icons.externalLink}</span>
+              </div>
+              <p>${repo.description}</p>
+              <div class="repo-card-meta">
+                <span>
+                  <span class="language-dot ${getLanguageClass(repo.language)}"></span>
+                  ${repo.language}
+                </span>
+                <span>${icons.star} ${repo.stars}</span>
+                <span>${icons.gitFork} ${repo.forks}</span>
+              </div>
+            </a>
+          `).join('')}
+        </div>
+        
+        <!-- Starred Projects -->
+        <div style="margin-bottom: 1.5rem;">
+          <h3 class="section-title line-reveal-item" data-delay="1150">
+            <span style="color: var(--link-yellow);">${icons.star}</span>
+            Starred Projects
+          </h3>
+          ${state.githubData.starred.map((project, i) => `
+            <div class="starred-item line-reveal-item" data-delay="${1200 + i * 60}">
+              <a href="${project.url}" target="_blank" rel="noopener noreferrer" class="starred-link">
+                <span class="name">${project.name}</span>
+                <span class="stars">★ ${project.stars}</span>
+              </a>
+              <p>${project.description}</p>
+            </div>
+          `).join('')}
+        </div>
+        
+        <!-- Footer -->
+        <div class="github-footer line-reveal-item" data-delay="1400">
+          <a href="https://github.com/${GITHUB_USERNAME}" target="_blank" rel="noopener noreferrer">
+            View all on GitHub
+            ${icons.externalLink}
+          </a>
+        </div>
+      `;
+
+      setupLineReveals();
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      // Typed effect
+      const typedElement = document.getElementById('typed-output');
+      if (typedElement) {
+        new TypedEffect(typedElement, {
+          strings: typedStrings,
+          ...typedConfig,
+        });
+      }
+
+      // Navigation
+      renderNavigation();
+
+      // Initial section
+      const content = document.getElementById('section-content');
+      renderHomeSection(content);
+      setupLineReveals();
+
+      // Parallax
+      setupParallax();
+    });
+  </script>
+</body>
+</html>
