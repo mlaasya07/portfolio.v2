@@ -55,17 +55,15 @@ export const skills = [
 export const technologies = [
   { name: "React", icon: "code", color: "blue" },
   { name: "Python", icon: "terminal", color: "yellow" },
-  { name: "TensorFlow", icon: "brain", color: "pink" },
-  { name: "PostgreSQL", icon: "database", color: "green" },
-  { name: "Git", icon: "git", color: "pink" },
-  { name: "AWS", icon: "cloud", color: "yellow" },
-  { name: "Node.js", icon: "globe", color: "green" },
-  { name: "Docker", icon: "layers", color: "blue" },
-  { name: "Flutter", icon: "smartphone", color: "blue" },
-  { name: "AI/ML", icon: "cpu", color: "pink" },
-  { name: "Figma", icon: "palette", color: "pink" },
-  { name: "Cybersecurity", icon: "shield", color: "green" },
+  { name: "PostgreSQL", icon: "database", color: "indigo" },
+  { name: "GitHub", icon: "git-branch", color: "gray" },
+  { name: "HTML/CSS/JS", icon: "layout", color: "orange" },
+  { name: "Node.js", icon: "server", color: "green" },
+  { name: "Docker", icon: "layers", color: "cyan" },
+  { name: "Mobile Development", icon: "smartphone", color: "blue" },
+  { name: "AI & Machine Learning", icon: "cpu", color: "pink" },
 ];
+
 
 export const projects = [
   {
