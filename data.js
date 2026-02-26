@@ -155,8 +155,7 @@ export const socialLinks = [
   },
 ];
 
-export const substackFeedUrl = "https://api.rss2json.com/v1/api.json?rss_url=https://mlaasya07.substack.com/feed";
-
+export const substackFeedUrl =  "https://api.rss2json.com/v1/api.json?rss_url=https://mlaasya07.substack.com/feed&t=" + Date.now();
 export const languageColors = {
   TypeScript: "bg-blue",
   JavaScript: "bg-yellow",
