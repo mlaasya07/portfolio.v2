@@ -22,7 +22,7 @@ export const navTabs = [
   { label: "skills", value: "skills", color: "green" },
   { label: "projects", value: "projects", color: "blue" },
   { label: "blog", value: "blog", color: "yellow" },
-  { label: "socials", value: "socials", color: "pink" },
+  { label: "socials", value: "socials", color: "red" },
 ];
 
 export const homeContent = {
