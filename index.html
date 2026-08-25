@@ -1115,30 +1115,93 @@
     }
 
     // Initialize navigation
-    function renderNavigation() {
-      const nav = document.getElementById('navigation');
-      nav.innerHTML = navTabs.map(tab => `
-        <button 
-          class="nav-link ${state.activeTab === tab.value ? 'active' : ''}"
-          data-tab="${tab.value}"
-          data-color="${tab.color}"
-        >
-          ${tab.label}
-        </button>
-      `).join('');
+   function renderNavigation() {
+const nav = document.getElementById('navigation');
 
-      nav.querySelectorAll('.nav-link').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const newTab = btn.dataset.tab;
-          const currentIndex = tabOrder.indexOf(state.activeTab);
-          const newIndex = tabOrder.indexOf(newTab);
-          state.direction = newIndex > currentIndex ? 1 : -1;
-          state.activeTab = newTab;
-          renderNavigation();
-          switchSection();
-        });
-      });
-    }
+nav.innerHTML = navTabs.map(tab => {
+
+/*
+ * BLOG IS NOW A REAL PAGE
+ * instead of an in-page section.
+ */
+
+if (tab.value === 'blog') {
+  return `
+    <a
+      href="blog.html"
+      class="nav-l
+ink"
+      data-color="${tab.color}"
+    >
+      ${tab.label}
+    </a>
+  `;
+}
+
+
+/*
+ * Everything else stays exactly
+ * as your existing portfolio works.
+ */
+
+return `
+  <button
+    class="nav-link ${
+      state.activeTab === tab.value
+        ? 'active'
+        : ''
+    }"
+    data-tab="${tab.value}"
+    data-color="${tab.color}"
+  >
+    ${tab.label}
+  </button>
+`;
+
+}).join('');
+
+/*
+
+Only the buttons need the
+single-page section switching.
+*/
+
+nav
+.querySelectorAll('button.nav-link')
+.forEach(btn => {
+
+  btn.addEventListener('click', () => {
+
+    const newTab =
+      btn.dataset.tab;
+
+    const currentIndex =
+      tabOrder.indexOf(
+        state.activeTab
+      );
+
+    const newIndex =
+      tabOrder.indexOf(newTab);
+
+
+    state.direction =
+      newIndex > currentIndex
+        ? 1
+        : -1;
+
+    state.activeTab =
+      newTab;
+
+
+    renderNavigation();
+
+    switchSection();
+
+  });
+
+});
+
+}
 
     // Section switching with animation
     function switchSection() {
