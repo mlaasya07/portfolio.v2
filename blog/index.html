@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <link rel="icon" type="image/jpeg" href="pfp.jpg">
+
   <title>Writing | Laasya</title>
 
-<meta
- name="description"
- content="Writing by Laasya — ideas, experiments, learning and things I'm figuring out."
-/>
+  <meta
+    name="description"
+    content="Writing by Laasya — ideas, experiments, learning and things I'm figuring out."
+  />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,11 +22,21 @@
   />
 
   <style>
+
+    /* =========================================================
+       RESET
+       ========================================================= */
+
     *,
     *::before,
     *::after {
       box-sizing: border-box;
     }
+
+
+    /* =========================================================
+       VARIABLES
+       ========================================================= */
 
     :root {
       --white: hsl(0, 0%, 94%);
@@ -42,6 +53,11 @@
       --highlight: hsl(75, 100%, 30%);
     }
 
+
+    /* =========================================================
+       BASE
+       ========================================================= */
+
     html {
       font-family: "JetBrains Mono", monospace;
       scroll-behavior: smooth;
@@ -50,9 +66,12 @@
     body {
       margin: 0;
       min-height: 100vh;
+
       background: var(--black);
       color: var(--white);
+
       -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
 
     ::selection {
@@ -69,9 +88,15 @@
       font: inherit;
     }
 
+
+    /* =========================================================
+       LAYOUT
+       ========================================================= */
+
     .container {
-      width: min(100% - 3rem, 42rem);
+      width: min(100% - 3rem, 48rem);
       margin: 0 auto;
+
       padding: 3rem 0 6rem;
     }
 
@@ -81,13 +106,18 @@
       }
     }
 
-    /* NAVIGATION */
+
+    /* =========================================================
+       NAVIGATION
+       ========================================================= */
 
     .top-nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
+
       margin-bottom: 5rem;
+
       font-size: 0.8rem;
     }
 
@@ -98,6 +128,7 @@
     .nav-links {
       display: flex;
       gap: 1.25rem;
+
       color: var(--muted);
     }
 
@@ -109,157 +140,293 @@
       color: var(--yellow);
     }
 
-    /* HERO */
 
-    .eyebrow {
+    /* =========================================================
+       ARTICLE HEADER
+       ========================================================= */
+
+    .article-header {
+      margin-bottom: 4rem;
+    }
+
+    .article-category {
       color: var(--yellow);
+
       font-size: 0.75rem;
-      margin-bottom: 1rem;
+      text-transform: lowercase;
+
+      margin-bottom: 1.25rem;
     }
 
-    .hero {
-      margin-bottom: 3.5rem;
-    }
+    .article-title {
+      margin: 0;
 
-    .hero h1 {
-      margin: 0 0 1.25rem;
-      max-width: 40rem;
-      font-size: clamp(2.2rem, 8vw, 4rem);
+      max-width: 48rem;
+
+      font-size: clamp(2.2rem, 7vw, 4.2rem);
       line-height: 1.05;
+
       letter-spacing: -0.07em;
+      font-weight: 700;
     }
 
-    .hero p {
-      max-width: 36rem;
-      color: var(--muted);
-      font-size: 0.875rem;
-      line-height: 1.8;
-    }
-
-    /* CONTROLS */
-
-    .controls {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      margin-bottom: 2rem;
-    }
-
-    .filters {
+    .article-meta {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
-    }
+      gap: 0.6rem;
 
-    .filter {
-      border: 1px solid var(--border);
-      background: transparent;
+      margin-top: 1.5rem;
+
       color: var(--muted);
-      padding: 0.45rem 0.75rem;
-      cursor: pointer;
-      transition: all 0.2s ease;
+      font-size: 0.7rem;
     }
 
-    .filter:hover,
-    .filter.active {
-      border-color: var(--yellow);
-      background: var(--yellow);
-      color: var(--black);
-    }
-
-    .search {
-      width: 100%;
-      padding: 0.75rem 0;
-      border: 0;
-      border-bottom: 1px solid var(--border);
-      outline: none;
-      background: transparent;
-      color: var(--white);
-    }
-
-    .search:focus {
-      border-color: var(--yellow);
-    }
-
-    .search::placeholder {
+    .article-meta .dot {
       color: var(--gray);
     }
 
-    /* POSTS */
 
-    .posts {
+    /* =========================================================
+       ARTICLE CONTENT
+       ========================================================= */
+
+    .article {
       border-top: 1px solid var(--border);
+
+      padding-top: 3rem;
     }
 
-    .post {
-      display: block;
-      border-bottom: 1px solid var(--border);
-      padding: 1.75rem 0;
-      transition: transform 0.25s ease;
+    .article-content {
+      color: hsl(0, 0%, 82%);
+
+      font-size: 0.9rem;
+      line-height: 2;
     }
 
-    .post:hover {
-      transform: translateX(0.4rem);
+    .article-content p {
+      margin: 0 0 1.8rem;
     }
 
-    .post-meta {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-      color: var(--muted);
-      font-size: 0.7rem;
+    .article-content h2 {
+      margin: 3.5rem 0 1.25rem;
+
+      color: var(--white);
+
+      font-size: 1.25rem;
+      line-height: 1.4;
     }
 
-    .post h2 {
-      margin: 0.75rem 0 0.6rem;
-      font-size: 1.1rem;
+    .article-content h3 {
+      margin: 2.5rem 0 1rem;
+
+      color: var(--white);
+
+      font-size: 1rem;
       line-height: 1.5;
-      font-weight: 500;
-      transition: color 0.2s ease;
     }
 
-    .post:hover h2 {
+    .article-content strong {
+      color: var(--white);
+      font-weight: 700;
+    }
+
+    .article-content em {
       color: var(--yellow);
     }
 
-    .post-excerpt {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.8rem;
-      line-height: 1.8;
+    .article-content a {
+      color: var(--yellow);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
     }
 
-    .post-footer {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 1rem;
+    .article-content a:hover {
+      color: var(--white);
+    }
+
+    .article-content ul,
+    .article-content ol {
+      margin: 0 0 2rem;
+      padding-left: 1.5rem;
+    }
+
+    .article-content li {
+      margin-bottom: 0.75rem;
+    }
+
+    .article-content blockquote {
+      margin: 2.5rem 0;
+
+      padding: 0.5rem 0 0.5rem 1.5rem;
+
+      border-left: 2px solid var(--yellow);
+
+      color: var(--muted);
+
+      font-style: italic;
+    }
+
+    .article-content code {
+      padding: 0.15rem 0.35rem;
+
+      background: var(--secondary);
+      border: 1px solid var(--border);
+
+      color: var(--yellow);
+
+      font-size: 0.8em;
+    }
+
+    .article-content pre {
+      overflow-x: auto;
+
+      margin: 2rem 0;
+      padding: 1.25rem;
+
+      background: hsl(0, 0%, 11%);
+      border: 1px solid var(--border);
+
+      line-height: 1.7;
+    }
+
+    .article-content pre code {
+      padding: 0;
+
+      background: transparent;
+      border: 0;
+
+      color: var(--white);
+    }
+
+    .article-content hr {
+      margin: 3.5rem 0;
+
+      border: 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .article-content img {
+      display: block;
+
+      width: 100%;
+      height: auto;
+
+      margin: 2.5rem 0;
+
+      border: 1px solid var(--border);
+    }
+
+
+    /* =========================================================
+       SUBSTACK BUTTON
+       ========================================================= */
+
+    .source-box {
+      margin-top: 4rem;
+
+      padding: 1.5rem;
+
+      border: 1px solid var(--border);
+
+      background: hsl(0, 0%, 10%);
+    }
+
+    .source-label {
+      margin-bottom: 0.75rem;
+
+      color: var(--muted);
+
       font-size: 0.7rem;
     }
 
-    .category {
-      color: var(--green);
-    }
+    .source-link {
+      display: inline-block;
 
-    .read {
-      color: var(--muted);
-    }
+      color: var(--yellow);
 
-    .empty {
-      padding: 3rem 0;
-      text-align: center;
-      color: var(--muted);
       font-size: 0.8rem;
+
+      transition: transform 0.2s ease;
     }
 
-    /* FOOTER */
+    .source-link:hover {
+      transform: translateX(0.3rem);
+    }
+
+
+    /* =========================================================
+       ARTICLE NAVIGATION
+       ========================================================= */
+
+    .article-navigation {
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 1rem;
+
+      margin-top: 5rem;
+
+      padding-top: 1.5rem;
+
+      border-top: 1px solid var(--border);
+    }
+
+    .nav-post {
+      display: block;
+
+      padding: 1rem 0;
+
+      transition: transform 0.2s ease;
+    }
+
+    .nav-post:hover {
+      transform: translateX(0.25rem);
+    }
+
+    .nav-post.next {
+      text-align: right;
+    }
+
+    .nav-direction {
+      display: block;
+
+      margin-bottom: 0.6rem;
+
+      color: var(--muted);
+
+      font-size: 0.65rem;
+    }
+
+    .nav-title {
+      color: var(--white);
+
+      font-size: 0.75rem;
+      line-height: 1.6;
+    }
+
+    .nav-post:hover .nav-title {
+      color: var(--yellow);
+    }
+
+
+    /* =========================================================
+       FOOTER
+       ========================================================= */
 
     footer {
       display: flex;
+
       justify-content: space-between;
+
       margin-top: 4rem;
       padding-top: 1.5rem;
+
       border-top: 1px solid var(--border);
+
       color: var(--muted);
+
       font-size: 0.7rem;
     }
 
@@ -267,9 +434,35 @@
       color: var(--yellow);
     }
 
+
+    /* =========================================================
+       ERROR
+       ========================================================= */
+
+    .error {
+      padding: 3rem 0;
+
+      color: var(--muted);
+
+      font-size: 0.8rem;
+      line-height: 1.8;
+    }
+
+    .error a {
+      color: var(--yellow);
+    }
+
+
+    /* =========================================================
+       MOBILE
+       ========================================================= */
+
     @media (max-width: 560px) {
+
       .container {
-        width: min(100% - 2rem, 42rem);
+        width: min(100% - 2rem, 48rem);
+
+        padding-top: 3rem;
       }
 
       .top-nav {
@@ -280,116 +473,102 @@
         gap: 0.75rem;
       }
 
-      .hero h1 {
+      .article-title {
         font-size: 2.5rem;
+      }
+
+      .article-content {
+        font-size: 0.85rem;
+        line-height: 1.9;
+      }
+
+      .article-navigation {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-post.next {
+        text-align: left;
       }
 
       footer {
         flex-direction: column;
+
         gap: 0.75rem;
       }
     }
-  </style>
 
+  </style>
 </head>
+
 
 <body>
 
   <main class="container">
 
-```
-<!-- NAVIGATION -->
 
-<nav class="top-nav">
-  <a href="index.html" class="brand">
-    mlaasya07
-  </a>
+    <!-- =======================================================
+         NAVIGATION
+         ======================================================= -->
 
-  <div class="nav-links">
-    <a href="index.html">
-      portfolio
-    </a>
+    <nav class="top-nav">
 
-    <a
-      href="https://mlaasya07.substack.com/"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      substack ↗
-    </a>
-  </div>
-</nav>
+      <a href="index.html" class="brand">
+        mlaasya07
+      </a>
 
+      <div class="nav-links">
 
-<!-- HERO -->
+        <a href="index.html">
+          writing
+        </a>
 
-<header class="hero">
+        <a
+          href="https://mlaasya07.substack.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          substack ↗
+        </a>
 
-  <div class="eyebrow">
-    / writing
-  </div>
+      </div>
 
-  <h1>
-    things i'm<br>
-    figuring out.
-  </h1>
-
-  <p>
-    Notes on building things, technology, ideas, work,
-    learning, and whatever else I can't stop thinking about.
-  </p>
-
-</header>
+    </nav>
 
 
-<!-- FILTERS + SEARCH -->
+    <!-- =======================================================
+         ARTICLE
+         ======================================================= -->
 
-<section class="controls">
+    <article id="article">
 
-  <div
-    id="filters"
-    class="filters"
-  ></div>
+      <!-- Filled by JavaScript -->
 
-  <input
-    id="search"
-    class="search"
-    type="search"
-    placeholder="search writing..."
-    autocomplete="off"
-  />
-
-</section>
+    </article>
 
 
-<!-- POSTS -->
+    <!-- =======================================================
+         FOOTER
+         ======================================================= -->
 
-<section
-  id="posts"
-  class="posts"
-></section>
+    <footer>
 
+      <a href="index.html">
+        ← all writing
+      </a>
 
-<!-- FOOTER -->
+      <a
+        href="https://mlaasya07.substack.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        read on substack ↗
+      </a>
 
-<footer>
+    </footer>
 
-  <a href="index.html">
-    ← back to portfolio
-  </a>
-
-  <a
-    href="https://mlaasya07.substack.com/"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    read on substack ↗
-  </a>
-
-</footer>
-```
 
   </main>
+
 
   <script>
 
@@ -398,15 +577,35 @@
       BLOG POSTS
       ==========================================================
 
-      Add new posts inside this array.
+      Each post needs a unique "id".
 
-      You don't need to create a new HTML file for every post.
+      Example URL:
+
+      blog.html?id=ai-leverage
+
+      ----------------------------------------------------------
+
+      source:
+
+      "local"
+        → article is displayed on your website
+
+      "substack"
+        → sends the reader directly to Substack
+
+      "local-substack"
+        → displays article here AND gives a
+          "Read on Substack" button
+
       ==========================================================
     */
+
 
     const posts = [
 
       {
+        id: "ai-leverage",
+
         title:
           "AI Is Not Coming for Jobs. It Is Coming for Leverage.",
 
@@ -419,15 +618,50 @@
         readTime:
           "7 min read",
 
-        excerpt:
-          "The interesting question isn't whether AI replaces me. It's what I can do now that I couldn't do before.",
+        source:
+          "local-substack",
 
-        url:
-          "https://mlaasya07.substack.com/p/ai-is-not-coming-for-jobs"
+        substack:
+          "https://mlaasya07.substack.com/p/ai-is-not-coming-for-jobs",
+
+        content: `
+
+          <p>
+            The interesting question isn't whether AI replaces me.
+            It's what I can do now that I couldn't do before.
+          </p>
+
+          <p>
+            <!-- PUT THE REST OF YOUR BLOG HERE -->
+          </p>
+
+          <h2>
+            The real shift
+          </h2>
+
+          <p>
+            <!-- YOUR ARTICLE CONTENT -->
+          </p>
+
+          <p>
+            <!-- YOUR ARTICLE CONTENT -->
+          </p>
+
+          <h2>
+            Leverage
+          </h2>
+
+          <p>
+            <!-- YOUR ARTICLE CONTENT -->
+          </p>
+
+        `
       },
 
 
       {
+        id: "learning-in-public",
+
         title:
           "learning in public",
 
@@ -440,11 +674,35 @@
         readTime:
           "4 min read",
 
-        excerpt:
-          "Why I want this site to be more than a list of projects.",
+        source:
+          "local",
 
-        url:
-          "#"
+        content: `
+
+          <p>
+            I've been thinking about what it actually means
+            to learn in public.
+          </p>
+
+          <p>
+            This website is partly an experiment in doing that.
+            I don't want it to be just a list of projects I've
+            completed or technologies I've used.
+          </p>
+
+          <h2>
+            Why I'm doing this
+          </h2>
+
+          <p>
+            <!-- YOUR ARTICLE CONTENT -->
+          </p>
+
+          <p>
+            <!-- YOUR ARTICLE CONTENT -->
+          </p>
+
+        `
       }
 
     ];
@@ -452,144 +710,180 @@
 
     /*
       ==========================================================
-      STATE
+      GET POST ID
       ==========================================================
     */
 
-    let activeCategory = "all";
-    let searchQuery = "";
+    const params =
+      new URLSearchParams(window.location.search);
+
+    const postId =
+      params.get("id");
 
 
     /*
       ==========================================================
-      CATEGORIES
+      FIND POST
       ==========================================================
     */
 
-    function renderFilters() {
+    const postIndex =
+      posts.findIndex(
+        post => post.id === postId
+      );
 
-      const filters =
-        document.getElementById("filters");
-
-      const categories = [
-        "all",
-        ...new Set(
-          posts.map(post => post.category)
-        )
-      ];
-
-      filters.innerHTML =
-        categories.map(category => `
-
-          <button
-            class="filter ${
-              activeCategory === category
-                ? "active"
-                : ""
-            }"
-            data-category="${category}"
-          >
-            ${category}
-          </button>
-
-        `).join("");
+    const post =
+      posts[postIndex];
 
 
-      filters
-        .querySelectorAll(".filter")
-        .forEach(button => {
+    /*
+      ==========================================================
+      ARTICLE ELEMENT
+      ==========================================================
+    */
 
-          button.addEventListener(
-            "click",
-            () => {
+    const article =
+      document.getElementById("article");
 
-              activeCategory =
-                button.dataset.category;
 
-              renderFilters();
-              renderPosts();
+    /*
+      ==========================================================
+      INVALID POST
+      ==========================================================
+    */
 
-            }
-          );
+    if (!post) {
 
-        });
+      document.title =
+        "Writing | Laasya";
+
+      article.innerHTML = `
+
+        <div class="error">
+
+          <p>
+            this post doesn't exist.
+          </p>
+
+          <p>
+            <a href="index.html">
+              ← back to writing
+            </a>
+          </p>
+
+        </div>
+
+      `;
 
     }
 
 
     /*
       ==========================================================
-      POSTS
+      RENDER POST
       ==========================================================
     */
 
-    function renderPosts() {
+    else {
 
-      const container =
-        document.getElementById("posts");
-
-      const filteredPosts =
-        posts.filter(post => {
-
-          const matchesCategory =
-            activeCategory === "all" ||
-            post.category === activeCategory;
-
-          const searchable =
-            `
-              ${post.title}
-              ${post.excerpt}
-              ${post.category}
-            `.toLowerCase();
-
-          const matchesSearch =
-            searchable.includes(
-              searchQuery.toLowerCase()
-            );
-
-          return (
-            matchesCategory &&
-            matchesSearch
-          );
-
-        });
+      document.title =
+        `${post.title} | Laasya`;
 
 
-      if (!filteredPosts.length) {
+      /*
+        --------------------------------------------------------
+        PREVIOUS POST
+        --------------------------------------------------------
+      */
 
-        container.innerHTML = `
+      const previousPost =
+        postIndex > 0
+          ? posts[postIndex - 1]
+          : null;
 
-          <div class="empty">
-            nothing found.
+
+      /*
+        --------------------------------------------------------
+        NEXT POST
+        --------------------------------------------------------
+      */
+
+      const nextPost =
+        postIndex < posts.length - 1
+          ? posts[postIndex + 1]
+          : null;
+
+
+      /*
+        --------------------------------------------------------
+        SUBSTACK SOURCE
+        --------------------------------------------------------
+      */
+
+      let sourceBox = "";
+
+
+      if (
+        post.substack &&
+        (
+          post.source === "local-substack" ||
+          post.source === "substack"
+        )
+      ) {
+
+        sourceBox = `
+
+          <div class="source-box">
+
+            <div class="source-label">
+              originally published on
+            </div>
+
+            <a
+              class="source-link"
+              href="${post.substack}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              read the original on substack ↗
+            </a>
+
           </div>
 
         `;
 
-        return;
-
       }
 
 
-      container.innerHTML =
-        filteredPosts.map(post => `
+      /*
+        --------------------------------------------------------
+        SUBSTACK-ONLY POST
+        --------------------------------------------------------
+      */
 
-          <a
-            class="post"
-            href="${post.url}"
-            ${
-              post.url.startsWith("http")
-                ? 'target="_blank" rel="noopener noreferrer"'
-                : ""
-            }
-          >
+      if (post.source === "substack") {
 
-            <div class="post-meta">
+        article.innerHTML = `
+
+          <header class="article-header">
+
+            <div class="article-category">
+              / ${post.category}
+            </div>
+
+            <h1 class="article-title">
+              ${post.title}
+            </h1>
+
+            <div class="article-meta">
 
               <span>
                 ${post.date}
               </span>
 
-              <span>·</span>
+              <span class="dot">
+                ·
+              </span>
 
               <span>
                 ${post.readTime}
@@ -597,65 +891,157 @@
 
             </div>
 
+          </header>
 
-            <h2>
+
+          <div class="article">
+
+            <div class="article-content">
+
+              <p>
+                This article is published on Substack.
+              </p>
+
+              <p>
+                You can read the complete article there.
+              </p>
+
+              <div class="source-box">
+
+                <div class="source-label">
+                  full article
+                </div>
+
+                <a
+                  class="source-link"
+                  href="${post.substack}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  read on substack ↗
+                </a>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        `;
+
+      }
+
+
+      /*
+        --------------------------------------------------------
+        LOCAL ARTICLE
+        --------------------------------------------------------
+      */
+
+      else {
+
+        article.innerHTML = `
+
+          <header class="article-header">
+
+            <div class="article-category">
+              / ${post.category}
+            </div>
+
+            <h1 class="article-title">
               ${post.title}
-            </h2>
+            </h1>
 
+            <div class="article-meta">
 
-            <p class="post-excerpt">
-              ${post.excerpt}
-            </p>
-
-
-            <div class="post-footer">
-
-              <span class="category">
-                ${post.category}
+              <span>
+                ${post.date}
               </span>
 
-              <span class="read">
-                read →
+              <span class="dot">
+                ·
+              </span>
+
+              <span>
+                ${post.readTime}
               </span>
 
             </div>
 
-          </a>
+          </header>
 
-        `).join("");
+
+          <div class="article">
+
+            <div class="article-content">
+
+              ${post.content}
+
+            </div>
+
+            ${sourceBox}
+
+
+            <nav class="article-navigation">
+
+
+              ${
+                previousPost
+                  ? `
+
+                    <a
+                      class="nav-post previous"
+                      href="blog.html?id=${previousPost.id}"
+                    >
+
+                      <span class="nav-direction">
+                        ← previous
+                      </span>
+
+                      <span class="nav-title">
+                        ${previousPost.title}
+                      </span>
+
+                    </a>
+
+                  `
+                  : `<div></div>`
+              }
+
+
+              ${
+                nextPost
+                  ? `
+
+                    <a
+                      class="nav-post next"
+                      href="blog.html?id=${nextPost.id}"
+                    >
+
+                      <span class="nav-direction">
+                        next →
+                      </span>
+
+                      <span class="nav-title">
+                        ${nextPost.title}
+                      </span>
+
+                    </a>
+
+                  `
+                  : `<div></div>`
+              }
+
+
+            </nav>
+
+          </div>
+
+        `;
+
+      }
 
     }
-
-
-    /*
-      ==========================================================
-      SEARCH
-      ==========================================================
-    */
-
-    document
-      .getElementById("search")
-      .addEventListener(
-        "input",
-        event => {
-
-          searchQuery =
-            event.target.value;
-
-          renderPosts();
-
-        }
-      );
-
-
-    /*
-      ==========================================================
-      INITIALISE
-      ==========================================================
-    */
-
-    renderFilters();
-    renderPosts();
 
   </script>
 
