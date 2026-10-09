@@ -4,13 +4,13 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Laasya | Full-Stack Developer</title>
-<meta name="description" content="Laasya is a full-stack developer and Data Science student in Hyderabad. Projects, writing, and hackathon work." />
+<meta name="description" content="Laasya is a full-stack developer and Data Science student in Hyderabad. Projects, writing, and experimenting." />
 <link rel="canonical" href="https://mlaasya07.netlify.app/" />
 <meta name="theme-color" content="#0a0d0f" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Laasya" />
 <meta property="og:title" content="Laasya | Full-Stack Developer" />
-<meta property="og:description" content="Laasya is a full-stack developer and Data Science student in Hyderabad. Projects, writing, and hackathon work." />
+<meta property="og:description" content="Laasya is a full-stack developer and Data Science student in Hyderabad. Projects, writing, and experimenting." />
 <meta property="og:url" content="https://mlaasya07.netlify.app/" />
 <meta property="og:image" content="https://mlaasya07.netlify.app/og-image.png" />
 <meta property="og:image:width" content="1200" />
@@ -18,7 +18,7 @@
 <meta property="og:image:alt" content="Laasya, full-stack developer and Data Science student in Hyderabad" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Laasya | Full-Stack Developer" />
-<meta name="twitter:description" content="Laasya is a full-stack developer and Data Science student in Hyderabad. Projects, writing, and hackathon work." />
+<meta name="twitter:description" content="Laasya is a full-stack developer and Data Science student in Hyderabad. Projects, writing, and experimenting." />
 <meta name="twitter:image" content="https://mlaasya07.netlify.app/og-image.png" />
 <script type="application/ld+json">
 {
@@ -427,7 +427,8 @@
   }
 
   /* ══════════ latest posts on hover (substack / medium) ══════════ */
-  .cf-hover-wrap.has-posts{ max-width:1060px; }
+  .cf-hover-wrap.blog-wrap{ max-width:1060px; }
+  .blog-wrap:not(.has-posts) .cf-hover-panel{ max-width:32rem; }
   .has-posts .cf-hover-panel{ flex-direction:row; align-items:center; gap:1.8rem; }
   .has-posts .cf-panel-text{ flex:1 1 0; min-width:0; }
   .has-posts .cf-posts{ flex:1 1 0; min-width:0; list-style:none; display:flex; flex-direction:column; gap:0.5rem; }
@@ -659,7 +660,7 @@
         const d = document.getElementById('substackFolder-detail');
         d.classList.remove('revealed'); d.textContent = 'click the eye for the bio';
       } else if(id==='mediumFolder'){
-        document.getElementById('mediumFolder-latest').textContent = '••••••••••';
+        document.getElementById('mediumFolder-latest').textContent = '♡';
         const d = document.getElementById('mediumFolder-detail');
         d.classList.remove('revealed'); d.textContent = 'click the eye for the latest post';
       }
@@ -1027,7 +1028,7 @@
                   <div class="ac-item"><span class="ac-item-label">Programme</span><span class="ac-item-val accent">B.Tech CSE (DS)</span></div>
                   <div class="ac-item"><span class="ac-item-label">Campus</span><span class="ac-item-val">Gachibowli, Hyderabad</span></div>
                   <div class="ac-item"><span class="ac-item-label">Previously</span><span class="ac-item-val">WrenchCloud · Full-Stack</span></div>
-                  <div class="ac-item"><span class="ac-item-label">Focus</span><span class="ac-item-val accent">Full-Stack · ML</span></div>
+                  <div class="ac-item"><span class="ac-item-label">Venture</span><span class="ac-item-val accent">MedDex</span></div>
                 </div>
                 <div class="ac-skills">
                   <span class="ac-skill-chip">React</span><span class="ac-skill-chip">Python</span><span class="ac-skill-chip">Machine Learning</span>
@@ -1046,8 +1047,8 @@
               <span class="cf-info-top">
                 ${cfEyeButton('eduFolder2', 'Show details')}
                 <span class="cf-meta">
-                  <span><span class="cf-label">Degree</span><br/><span class="cf-value">B.Tech DS</span></span>
-                  <span><span class="cf-label">Graduating</span><br/><span class="cf-value" id="eduFolder2-grad">••••</span></span>
+                  <span><span class="cf-label">Degree</span><br/><span class="cf-value">B.Tech-DS</span></span>
+                  <span><span class="cf-label">Graduating</span><br/><span class="cf-value" id="eduFolder2-grad">2027</span></span>
                 </span>
               </span>
               <span class="cf-info-bottom"><span class="cf-title">CR Rao AIMSCS</span><span class="cf-sub" id="eduFolder2-detail">Hyderabad · JNTUH</span></span>
@@ -1066,7 +1067,7 @@
 
   function cfBlogCard(o){
     return `
-      <div class="cf-hover-wrap${o.feed ? ' has-posts' : ''}">
+      <div class="cf-hover-wrap blog-wrap${o.feed ? ' has-posts' : ''}">
         <div class="card-folder" data-open="false" data-details-visible="false" id="${o.id}">
           <button class="cf-trigger" type="button" aria-expanded="false" aria-label="Open ${o.name}" onclick="cfToggleOpen('${o.id}')">
             <span class="cf-back" aria-hidden="true"></span>
@@ -1146,7 +1147,7 @@
         headline:'Traces of Me', address:'a collection of verse — words i left behind', avatar:'✎',
         fields:[['Platform','Poetry site'],['Tagline','words i left behind'],['Style','free verse']],
         footer:'poetry · tracesofme.netlify.app', pips:2, eyeLabel:'Reveal a line',
-        meta1:['Since','2026'], meta2:'Line', idle:'click the eye for a line',
+        meta1:['Since','2019'], meta2:'Line', idle:'click the eye for a line',
         panel:'A collection of verse — feelings too large for spoken language, pressed into lines. Free verse, written slowly and posted when it feels finished.'
       })}
     </div>`;
@@ -1172,7 +1173,7 @@
   const routes = { home: pageHome, resume: pageResume, projects: pageProjects, education: pageEducation, blog: pageBlog, socials: pageSocials, "404": pageNotFound };
   const titles = { home:"Laasya | Full-Stack Developer", resume:"Resume ❤︎ @mlaasya07", projects:"Projects ❤︎ @mlaasya07", education:"Education V @mlaasya07", blog:"Blog ❤︎ @mlaasya07", socials:"Elsewhere @mlaasya07 Laasya", "404":"Not found ❤︎ @mlaasya07" };
   const descriptions = {
-    home: "Laasya is a full-stack developer and Data Science student in Hyderabad. Projects, writing, and hackathon work.",
+    home: "Laasya is a full-stack developer and Data Science student in Hyderabad. Projects, writing, and experimenting.",
     resume: "M. Laasya's resume — full-stack developer experience, projects, research, and skills.",
     projects: "Projects built by Laasya — from production SaaS work to poetry-adjacent side builds.",
     education: "Laasya's education — B.Tech in Data Science at CR Rao AIMSCS.",
