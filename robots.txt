@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mlaasya07.netlify.app/sitemap.xml
