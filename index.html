@@ -152,9 +152,9 @@
   .c-resume h2{ font-family:var(--serif); font-style:italic; font-weight:600; font-size:1.5rem; line-height:1.05; margin-bottom:1rem; }
   .resume-line{ display:flex; gap:0.6rem; padding:0.55rem 0; border-top:1px solid var(--line); }
   .resume-line:first-of-type{ border-top:none; }
-  .resume-dot{ width:0.4rem; height:0.4rem; border-radius:50%; margin-top:0.35rem; flex-shrink:0; }
-  .resume-role{ font-size:0.75rem; font-weight:500; }
+  .resume-dot{ width:0.4rem; height:0.4rem; border-radius:50%; margin-top:0.35rem; flex-shrink:0; background:var(--dot, var(--steel)); }  .resume-role{ font-size:0.75rem; font-weight:500; }
   .resume-org{ font-size:0.75rem; color:var(--muted); }
+  .resume-date{ font-size:0.65rem; font-style:italic; color:var(--dot, var(--steel)); margin-top:0.1rem; }
   .resume-cta{ margin-top:auto; padding-top:1rem; font-size:0.75rem; color:var(--steel); display:flex; align-items:center; gap:0.35rem; }
   .resume-cta svg{ width:0.85rem; height:0.85rem; }
 
@@ -331,6 +331,7 @@
   .dt-card::before{ content:''; position:absolute; left:calc(-1.25rem - 0.2rem); top:1.45rem; width:0.4rem; height:0.4rem; border-radius:50%; background:var(--bg); border:1px solid var(--muted); }
   .dt-card[data-t="hackathon"]::before{ border-color:var(--crimson); background:var(--crimson); }
   .dt-card[data-t="certificate"]::before{ border-color:var(--steel); background:var(--steel); }
+  .dt-card[data-t="contests"]::before{ border-color:var(--crimson); background:var(--crimson); }
   .dt-card[data-t="badge"]::before{ border-color:var(--sage); background:var(--sage); }
   .dt-card[data-t="group"]::before{ border-color:var(--fg); background:var(--fg); }
 
@@ -348,6 +349,7 @@
   .dt-type{ font-size:0.75rem; border:1px solid var(--line); border-radius:999px; padding:0.1rem 0.5rem; }
   .dt-type[data-t="hackathon"]{ color:var(--crimson); border-color:rgba(196,40,71,0.4); background:var(--crimson-soft); }
   .dt-type[data-t="certificate"]{ color:var(--steel); border-color:rgba(132,172,206,0.4); background:var(--steel-soft); }
+  .dt-type[data-t="contests"]{ color:var(--crimson); border-color:rgba(196,40,71,0.4); background:var(--crimson-soft); }
   .dt-type[data-t="badge"]{ color:var(--sage); border-color:rgba(181,189,137,0.4); background:var(--sage-soft); }
   .dt-title{ font-size:0.92rem; font-weight:600; line-height:1.35; margin-top:0.45rem; }
   .dt-issuer{ font-size:0.75rem; color:var(--steel); margin-top:0.2rem; line-height:1.5; }
@@ -815,18 +817,30 @@
 
       <div class="card c-resume reveal" style="animation-delay:.08s">
         <h2>experience</h2>
-        <div class="resume-line">
-          <span class="resume-dot" style="background:var(--steel)"></span>
-          <div><div class="resume-role">Full-Stack Product Engineer</div><div class="resume-org">WrenchCloud</div></div>
+      <div class="resume-line" style="--dot:var(--steel)">
+        <span class="resume-dot"></span>
+        <div>
+          <div class="resume-role">Full-Stack Product Engineer</div>
+          <div class="resume-org">WrenchCloud</div>
+          <div class="resume-date">May 2026 - Aug 2026</div>
         </div>
-        <div class="resume-line">
-          <span class="resume-dot" style="background:var(--sage)"></span>
-          <div><div class="resume-role">AI Engineer Intern</div><div class="resume-org">Rayv (DigitalDots Inc.)</div></div>
+      </div>
+      <div class="resume-line" style="--dot:var(--sage)">
+        <span class="resume-dot"></span>
+        <div>
+          <div class="resume-role">AI Engineer Intern</div>
+          <div class="resume-org">Rayv (DigitalDots Inc.)</div>
+          <div class="resume-date">Apr 2025 - May 2025</div>
         </div>
-        <div class="resume-line">
-          <span class="resume-dot" style="background:var(--crimson)"></span>
-          <div><div class="resume-role">B.Tech, Data Science</div><div class="resume-org">CR Rao AIMSCS · 4th year</div></div>
+      </div>
+      <div class="resume-line" style="--dot:var(--crimson)">
+        <span class="resume-dot"></span>
+        <div>
+          <div class="resume-role">B.Tech, Data Science</div>
+          <div class="resume-org">CR Rao AIMSCS · 4th year</div>
+          <div class="resume-date">Aug 2023 - May 2027</div>
         </div>
+      </div>
         <a href="#/resume" class="resume-cta">view full resume ${icons.arrow}</a>
       </div>
 
@@ -845,7 +859,11 @@
           <div class="mega-title">projects</div>
         </div>
         <div class="mega-feature">
-          <div><div class="mega-feature-name">MedDex</div><div class="mega-feature-tag">healthtech · in development</div></div>
+          <div><div class="mega-feature-name">MedDex</div><div class="mega-feature-tag">healthtech</div></div>
+          <span class="mega-feature-pill">view</span>
+        </div>
+        <div class="mega-feature">
+          <div><div class="mega-feature-name">Gaia</div><div class="mega-feature-tag">final year project</div></div>
           <span class="mega-feature-pill">view</span>
         </div>
         <div class="mega-feature">
@@ -1367,10 +1385,11 @@
   const DEV_TABS = [
     {id:'all', label:'all'},
     {id:'hackathons', label:'hackathons & events'},
+    {id:'contests', label:'contests'},
     {id:'certificates', label:'certificates'},
     {id:'badges', label:'badges'},
   ];
-  const DEV_TAB_TYPE = { hackathons:'hackathon', certificates:'certificate', badges:'badge' };
+  const DEV_TAB_TYPE = { hackathons:'hackathon', certificates:'certificate',contests:'contests', badges:'badge' };
   const DEV_GROUPS = {
     'google-ai-essentials': { title:'Google AI Essentials', issuer:'Google · Coursera', bumped:null },
     'devpost': { title:'Devpost', issuer:'Badges earned on Devpost', bumped:null },
@@ -1378,25 +1397,25 @@
   
   const DEV_ITEMS = [
     {type:'certificate', title:'Sprint 2 Skill · Cantellat RISE', issuer:'Cyber Resilience Mind School · Cantellat RISE, fnCyber', date:'2026-10-26', result:'Bronze achievement', detail:'Sprint to Skill programme: 3 gates, 15 topics.', img:'cyber-resilience-sprint-2.jpg'},
-    {type:'certificate', group:'Young-Turks-2026', title:'Young Turks 2026 Round 1', issuer:'Naukri Campus · presented by HCLTech', date:'2026-10-19', result:'93.76 percentile, Rank#25040', img:'young-turks-2026-merit.jpg'},
-    {type:'certificate', group:'Young-Turks-2026', title:'Young Turks 2026 Round 2 | Domain: Coding, Data science & AI', issuer:'Naukri Campus · presented by HCLTech', date:'2026-11-13', result:'Rank#1836', img:'young-turks-2026-round2.1.png'},
-    {type:'certificate', group:'Young-Turks-2026', title:'Young Turks 2026 Round 2 | Domain: Accounting & Finance', issuer:'Naukri Campus · presented by HCLTech', date:'2026-11-13', result:'Rank#58', img:'young-turks-2026-round2.2.png'},
+    {type:'contests', group:'Young-Turks-2026', title:'Young Turks 2026 Round 1', issuer:'Naukri Campus · presented by HCLTech', date:'2026-10-19', result:'93.76 percentile, Rank#25040', img:'young-turks-2026-merit.jpg'},
+    {type:'contests', group:'Young-Turks-2026', title:'Young Turks 2026 Round 2 | Domain: Coding, Data science & AI', issuer:'Naukri Campus · presented by HCLTech', date:'2026-11-13', result:'Rank#1836', img:'young-turks-2026-round2.1.png'},
+    {type:'contests', group:'Young-Turks-2026', title:'Young Turks 2026 Round 2 | Domain: Accounting & Finance', issuer:'Naukri Campus · presented by HCLTech', date:'2026-11-13', result:'Rank#58', img:'young-turks-2026-round2.2.png'},
     {type:'certificate', title:'IBM · The Intelligence Behind AI', issuer:'IBM SkillsBuild', date:'2026-06-29', detail:'Course completion, 1 hr 10 min.', img:'ibm-intelligence-behind-ai.jpg'},
-    {type:'hackathon', title:'EY Techathon 6.0', issuer:'EY', date:'2026-04-14', detail:'Round 1: executive summary submission. Participation.'},
-    {type:'hackathon', title:'Tech Savishkaar 4.0', issuer:'VCE College', date:'2026-02-26', detail:'Team participant.'},
+    {type:'hackathon', title:'EY Techathon 6.0', issuer:'EY', date:'2026-04-14', detail:'Round 1: executive summary submission. Participation.', img:'EY certificate.jpg'},
+    {type:'hackathon', title:'Tech Savishkaar 4.0', issuer:'VCE College', date:'2026-02-26', detail:'Team participant.', img:'techsavishkaar certificate.jpg'},
     {type:'certificate', title:'SheCan Foundation Virtual charity drive internship', issuer:'She Can Foundation · via Internshala', date:'2025-12-10', detail:'One-week virtual fundraising internship.', img:'shecan-internshala-selection.jpg'},
-    {type:'hackathon', label:'certificate', title:'TATA Crucible Campus Quiz 2025', issuer:'TATA', date:'2025-11-28', detail:'Participation.', img:'tata-crucible-cop.jpg'},
-    {type:'hackathon', label:'certificate', title:'Quiz-A-Bit, Tech-a-Thon 4.0', issuer:'ECE Society · BIT Mesra, Ranchi', date:'2025-08-04', detail:'Participation.', img:'cop-bits_ranchi-img.jpg'},
+    {type:'contests', title:'TATA Crucible Campus Quiz 2025', issuer:'TATA', date:'2025-11-28', detail:'Participation.', img:'tata-crucible-cop.jpg'},
+    {type:'contests', title:'Quiz-A-Bit, Tech-a-Thon 4.0', issuer:'ECE Society · BIT Mesra, Ranchi', date:'2025-08-04', detail:'Participation.', img:'cop-bits_ranchi-img.jpg'},
     {type:'badge', group:'Devpost', title:'Devpost Generalist', short:'Generalist', issuer:'Devpost', date:'2025-07-26', detail:'Earned by submitting to 3 hackathons with different themes.', img:'Devpost_Badge-3.png'},
     {type:'badge', group:'Devpost', title:'Devpost First online hackathon', short:'First online hackathon', issuer:'Devpost', date:'2025-07-26', detail:'Earned by submitting an eligible project to an online hackathon.', img:'Devpost_Badge-2.png'},
     {type:'badge', group:'Devpost', title:'Devpost X Hackathons Level 1', short:'X Hackathons Level 1', issuer:'Devpost', date:'2025-07-26', detail:'Earned by submitting separate eligible projects to separate hackathons.', img:'Devpost_Badge-1.png'},
     {type:'badge', title:'GSSoC 2025 Contributor', issuer:'GirlScript Summer of Code', date:'2025-07-21', result:'Tech Contributors', img:'Contributor_s_badge.jpg'},
     // {type:'badge', group:'Devpost', title:'Devpost Anniversary Level 1', short:'Anniversary Level 1', issuer:'Devpost', date:'2026-05-24', detail:'Earned for each year after joining Devpost.'},
     // {type:'badge', group:'Devpost', title:'Welcome to Devpost', short:'Welcome to Devpost', issuer:'Devpost', date:'2025-05-24', detail:'Earned by joining Devpost.'},
-    {type:'certificate', group:'google-ai-essentials', title:'Google AI Essentials, course certificate', short:'Course certificate', issuer:'Google · Coursera', date:'2024-10-16', verify:'https://coursera.org/verify/DEECSKCZK64L', img:'google-ai-essentials-certificate.jpg'},
-    {type:'badge', group:'google-ai-essentials', title:'Google AI Essentials, Credly badge', short:'Credly badge', issuer:'Google · Coursera', date:'2024-10-15', verify:'https://www.credly.com/go/FheJA1yl', img:'google-ai-essentials-badge.jpg'},
+    {type:'certificate', group:'Google', title:'Google AI Essentials, course certificate', short:'Course certificate', issuer:'Google · Coursera', date:'2024-10-16', verify:'https://coursera.org/verify/DEECSKCZK64L', img:'google-ai-essentials-certificate.jpg'},
+    {type:'badge', group:'Google', title:'Google AI Essentials, Credly badge', short:'Credly badge', issuer:'Google · Coursera', date:'2024-10-15', verify:'https://www.credly.com/go/FheJA1yl', img:'google-ai-essentials-badge.jpg'},
     // undated: they sit at the bottom until a date is added
-    {type:'hackathon', title:'Rayv Hackathon - Team Codenheimer, Reward Recommandation Model', issuer:'DigitalDots.Inc', date: '2025-05-08', result:'4th place'},
+    {type:'hackathon', title:'Rayv Hackathon - Team Codenheimer, Reward Recommendation System', issuer:'DigitalDots.Inc', date: '2025-05-08', result:'4th place'},
     // {type:'hackathon', title:'SUVIDHA 2026', issuer:'Participant'},
   ];
 
@@ -1484,7 +1503,7 @@
 
   function pageDevtrails(){
     return `
-    <div class="page-head"><h1>devtrails</h1><p>Hackathons, certificates and badges, newest first. Related ones sit together in a row.</p></div>
+    <div class="page-head"><h1>devtrails</h1><p>Hackathons, contests, certificates and badges, newest first. Related ones sit together in a row.</p></div>
     <div class="dt-tabs" role="tablist" aria-label="Filter devtrails">
       ${DEV_TABS.map(t => {
         const n = DEV_ITEMS.filter(it => devMatches(it, t.id)).length;
@@ -1511,7 +1530,7 @@
     resume: "M. Laasya's resume — full-stack developer experience, projects, research, and skills.",
     projects: "Projects built by Laasya — from production SaaS work to poetry-adjacent side builds.",
     education: "Laasya's education — B.Tech in Data Science at CR Rao AIMSCS.",
-    devtrails: "Laasya's hackathons, certificates and badges, newest first.",
+    devtrails: "Laasya's hackathons, contests, certificates and badges, newest first.",
     blog: "Laasya's writing — tech philosophy on Substack and Medium, and poetry at Traces of Me.",
     socials: "Find Laasya on GitHub, LinkedIn, LeetCode, CodinGame, Substack, and Medium.",
     "404": "That page doesn't exist on this site.",
@@ -1845,7 +1864,7 @@
     {label:"resume", hint:"experience, projects, skills", route:"resume"},
     {label:"projects", hint:"everything I've shipped", route:"projects"},
     {label:"education", hint:"CR Rao AIMSCS, flip the card", route:"education"},
-    {label:"devtrails", hint:"hackathons, certificates &amp; badges", route:"devtrails"},
+    {label:"devtrails", hint:"hackathons, contests, certificates &amp; badges", route:"devtrails"},
     {label:"blog", hint:"Substack, Medium &amp; poetry", route:"blog"},
     {label:"socials", hint:"GitHub, LinkedIn, and the rest", route:"socials"},
   ];
